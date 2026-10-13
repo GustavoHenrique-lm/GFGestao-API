@@ -1,0 +1,121 @@
+@model List<GFGestao.API.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Usuários";
+}
+
+<style>
+    .usuarios-header {
+        margin-bottom: 25px;
+    }
+
+    .usuarios-header h1 {
+        margin-bottom: 5px;
+    }
+
+    .usuarios-header p {
+        color: #6b7280;
+    }
+
+    .tabela-container {
+        background-color: white;
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        overflow-x: auto;
+    }
+
+    .tabela-usuarios {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .tabela-usuarios th {
+        text-align: left;
+        padding: 15px;
+        background-color: #f3f4f6;
+        color: #374151;
+    }
+
+    .tabela-usuarios td {
+        padding: 15px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .tabela-usuarios tr:hover {
+        background-color: #f9fafb;
+    }
+
+    .perfil {
+        background-color: #ede9fe;
+        color: #5b21b6;
+        padding: 6px 10px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+</style>
+
+<div>
+
+    <div class="usuarios-header">
+
+        <h1>Usuários</h1>
+
+        <p>
+            Usuários cadastrados na plataforma GF Gestões.
+        </p>
+
+    </div>
+
+    <div class="tabela-container">
+
+        <table class="tabela-usuarios">
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Perfil</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @usuario.Id
+                        </td>
+
+                        <td>
+                            <strong>
+                                @usuario.Nome
+                            </strong>
+                        </td>
+
+                        <td>
+                            @usuario.Email
+                        </td>
+
+                        <td>
+                            <span class="perfil">
+                                @usuario.Perfil
+                            </span>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

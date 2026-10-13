@@ -1,0 +1,131 @@
+@{
+    ViewData["Title"] = "Relatórios";
+}
+
+<style>
+    .relatorios-header {
+        margin-bottom: 30px;
+    }
+
+    .relatorios-header h1 {
+        margin-bottom: 5px;
+    }
+
+    .relatorios-header p {
+        color: #6b7280;
+    }
+
+    .relatorios-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .relatorio-card {
+        background-color: white;
+        border-radius: 14px;
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .relatorio-card h3 {
+        margin: 0;
+        color: #6b7280;
+        font-size: 16px;
+    }
+
+    .numero {
+        font-size: 36px;
+        font-weight: bold;
+        color: #5b21b6;
+        margin-top: 12px;
+    }
+
+    .descricao {
+        color: #6b7280;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+
+<div>
+
+    <div class="relatorios-header">
+
+        <h1>Relatórios</h1>
+
+        <p>
+            Indicadores de produtividade da equipe GF Gestões.
+        </p>
+
+    </div>
+
+    <div class="relatorios-grid">
+
+        <div class="relatorio-card">
+
+            <h3>
+                Total de Tarefas
+            </h3>
+
+            <div class="numero">
+                @ViewBag.TotalTarefas
+            </div>
+
+            <div class="descricao">
+                Tarefas cadastradas.
+            </div>
+
+        </div>
+
+        <div class="relatorio-card">
+
+            <h3>
+                Pendentes
+            </h3>
+
+            <div class="numero">
+                @ViewBag.TarefasPendentes
+            </div>
+
+            <div class="descricao">
+                Aguardando execução.
+            </div>
+
+        </div>
+
+        <div class="relatorio-card">
+
+            <h3>
+                Em Andamento
+            </h3>
+
+            <div class="numero">
+                @ViewBag.TarefasEmAndamento
+            </div>
+
+            <div class="descricao">
+                Em execução pela equipe.
+            </div>
+
+        </div>
+
+        <div class="relatorio-card">
+
+            <h3>
+                Concluídas
+            </h3>
+
+            <div class="numero">
+                @ViewBag.TarefasConcluidas
+            </div>
+
+            <div class="descricao">
+                Tarefas finalizadas.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

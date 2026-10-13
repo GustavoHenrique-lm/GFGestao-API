@@ -1,0 +1,109 @@
+@model GFGestao.API.Models.Tarefa
+
+@{
+    ViewData["Title"] = "Nova Tarefa";
+}
+
+<div class="container mt-5">
+
+    <h1>Nova Tarefa</h1>
+
+    <p class="lead">
+        Cadastre uma nova tarefa para a equipe.
+    </p>
+
+    <hr />
+
+    <form asp-action="Create" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Titulo" class="form-label">
+                Título
+            </label>
+
+            <input asp-for="Titulo"
+                   class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Descricao" class="form-label">
+                Descrição
+            </label>
+
+            <textarea asp-for="Descricao"
+                      class="form-control"
+                      rows="4">
+            </textarea>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Tipo" class="form-label">
+                Tipo
+            </label>
+
+            <input asp-for="Tipo"
+                   class="form-control"
+                   placeholder="Ex.: Backlog, Sprint ou Daily" />
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Responsavel" class="form-label">
+                Responsável
+            </label>
+
+            <input asp-for="Responsavel"
+                   class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Data" class="form-label">
+                Data
+            </label>
+
+            <input asp-for="Data"
+                   type="date"
+                   class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label">
+                Status
+            </label>
+
+            <select asp-for="Status"
+                    class="form-select">
+
+                <option value="Pendente">
+                    Pendente
+                </option>
+
+                <option value="Em andamento">
+                    Em andamento
+                </option>
+
+                <option value="Concluído">
+                    Concluído
+                </option>
+
+            </select>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Criar Tarefa
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Cancelar
+        </a>
+
+    </form>
+
+</div>

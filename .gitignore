@@ -1,0 +1,11 @@
+bin/
+obj/
+publish/
+.vs/
+.vscode/
+*.user
+*.suo
+gfgestao.db
+*.db
+appsettings.Development.json
+script-banco.sql

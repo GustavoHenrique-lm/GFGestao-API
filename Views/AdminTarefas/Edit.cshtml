@@ -1,0 +1,178 @@
+@model GFGestao.API.Models.Tarefa
+
+@{
+    ViewData["Title"] = "Editar Tarefa";
+}
+
+<style>
+    .form-container {
+        background-color: white;
+        border-radius: 14px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        max-width: 800px;
+    }
+
+    .form-container h1 {
+        margin-bottom: 5px;
+    }
+
+    .form-subtitle {
+        color: #6b7280;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .btn-salvar {
+        background-color: #5b21b6;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .btn-salvar:hover {
+        background-color: #7c3aed;
+    }
+
+    .btn-cancelar {
+        display: inline-block;
+        margin-left: 10px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        background-color: #e5e7eb;
+        color: #374151;
+        text-decoration: none;
+    }
+</style>
+
+<div class="form-container">
+
+    <h1>Editar Tarefa</h1>
+
+    <p class="form-subtitle">
+        Altere as informações da tarefa abaixo.
+    </p>
+
+    <form asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+
+            <label asp-for="Titulo">
+                Título
+            </label>
+
+            <input asp-for="Titulo"
+                   class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label asp-for="Descricao">
+                Descrição
+            </label>
+
+            <textarea asp-for="Descricao"
+                      class="form-control"
+                      rows="4"></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label asp-for="Tipo">
+                Tipo
+            </label>
+
+            <input asp-for="Tipo"
+                   class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label asp-for="Responsavel">
+                Responsável
+            </label>
+
+            <input asp-for="Responsavel"
+                   class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label asp-for="Data">
+                Data
+            </label>
+
+            <input asp-for="Data"
+                   type="date"
+                   class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label asp-for="Status">
+                Status
+            </label>
+
+            <select asp-for="Status"
+                    class="form-control">
+
+                <option value="Pendente">
+                    Pendente
+                </option>
+
+                <option value="Em andamento">
+                    Em andamento
+                </option>
+
+                <option value="Concluído">
+                    Concluído
+                </option>
+
+            </select>
+
+        </div>
+
+        <button type="submit"
+                class="btn-salvar">
+            Salvar alterações
+        </button>
+
+        <a asp-action="Index"
+           class="btn-cancelar">
+            Cancelar
+        </a>
+
+    </form>
+
+</div>

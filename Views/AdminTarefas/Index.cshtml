@@ -1,0 +1,221 @@
+@model List<GFGestao.API.Models.Tarefa>
+
+@{
+    ViewData["Title"] = "Gerenciar Tarefas";
+}
+
+<style>
+    .tarefas-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .tarefas-header h1 {
+        margin: 0;
+    }
+
+    .tarefas-header p {
+        margin: 5px 0 0;
+        color: #6b7280;
+    }
+
+    .btn-nova {
+        background-color: #5b21b6;
+        color: white;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .btn-nova:hover {
+        background-color: #7c3aed;
+    }
+
+    .tabela-container {
+        background-color: white;
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        overflow-x: auto;
+    }
+
+    .tabela-tarefas {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .tabela-tarefas th {
+        text-align: left;
+        padding: 15px;
+        background-color: #f3f4f6;
+        color: #374151;
+    }
+
+    .tabela-tarefas td {
+        padding: 15px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .tabela-tarefas tr:hover {
+        background-color: #f9fafb;
+    }
+
+    .status {
+        padding: 6px 10px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .pendente {
+        background-color: #fef3c7;
+        color: #92400e;
+    }
+
+    .andamento {
+        background-color: #dbeafe;
+        color: #1e40af;
+    }
+
+    .concluido {
+        background-color: #dcfce7;
+        color: #166534;
+    }
+</style>
+
+<div>
+
+    <div class="tarefas-header">
+
+        <div>
+            <h1>Gerenciar Tarefas</h1>
+
+            <p>
+                Tarefas cadastradas na GF Gestões.
+            </p>
+        </div>
+
+        <a asp-action="Create" class="btn-nova">
+            + Nova Tarefa
+        </a>
+
+    </div>
+
+    <div class="tabela-container">
+
+        <table class="tabela-tarefas">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Tipo</th>
+                    <th>Responsável</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var tarefa in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @tarefa.Id
+                        </td>
+
+                        <td>
+                            <strong>
+                                @tarefa.Titulo
+                            </strong>
+                        </td>
+
+                        <td>
+                            @tarefa.Tipo
+                        </td>
+
+                        <td>
+                            @tarefa.Responsavel
+                        </td>
+
+                        <td>
+                            @tarefa.Data.ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+
+                            @if (tarefa.Status == "Pendente")
+                            {
+                                <span class="status pendente">
+                                    Pendente
+                                </span>
+                            }
+                            else if (tarefa.Status == "Em andamento")
+                            {
+                                <span class="status andamento">
+                                    Em andamento
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="status concluido">
+                                    Concluído
+                                </span>
+                            }
+
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Edit"
+                            asp-route-id="@tarefa.Id"
+                            style="
+                                background-color: #5b21b6;
+                                color: white;
+                                padding: 7px 12px;
+                                border-radius: 6px;
+                                text-decoration: none;
+                                font-size: 13px;
+                            ">
+                                Editar
+                            </a>
+
+                            <form asp-action="Delete"
+                                asp-route-id="@tarefa.Id"
+                                method="post"
+                                style="display: inline;"
+                                onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+
+                                <button type="submit"
+                                        style="
+                                            background-color: #dc2626;
+                                            color: white;
+                                            border: none;
+                                            padding: 7px 12px;
+                                            border-radius: 6px;
+                                            cursor: pointer;
+                                            font-size: 13px;
+                                            margin-left: 5px;
+                                        ">
+                                    Excluir
+                                </button>
+
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
