@@ -9,3 +9,10 @@ gfgestao.db
 *.db
 appsettings.Development.json
 script-banco.sql
+# Arquivos temporários de testes e credenciais
+script-migrations-teste.sql
+.env
+.env.*
+!.env.example
+# Artefatos de compilação
+artifacts/

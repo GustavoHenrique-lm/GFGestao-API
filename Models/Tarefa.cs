@@ -1,3 +1,4 @@
+
 namespace GFGestao.API.Models;
 
 public class Tarefa
@@ -11,6 +12,8 @@ public class Tarefa
     public string Tipo { get; set; } = string.Empty;
 
     public string Responsavel { get; set; } = string.Empty;
+
+    public string Equipe { get; set; } = string.Empty;
 
     public DateTime Data { get; set; }
 
