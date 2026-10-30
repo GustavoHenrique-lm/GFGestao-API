@@ -103,11 +103,15 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     if (builder.Environment.IsProduction())
     {
-        options.UseSqlServer(connectionString);
+        options.UseSqlServer(
+            connectionString,
+            sql => sql.MigrationsHistoryTable("__EFMigrationsHistory_SQLServer"));
     }
     else
     {
-        options.UseSqlite(connectionString);
+        options.UseSqlite(
+            connectionString,
+            sql => sql.MigrationsHistoryTable("__EFMigrationsHistory_SQLite"));
     }
 });
 
